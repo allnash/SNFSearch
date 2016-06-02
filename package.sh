@@ -6,4 +6,4 @@ echo "+ ATTEMPTING TO BUILD SNF SEARCH TOOL +"
 echo "+ ATTEMPTING TO BUILD CURRENT .TAR FOR UNIVERSAL SYSTEMS +"
 ./bin/activator universal:packageBin
 echo "+ STAGING BUILD COMPLETED +"
-cp target/universal/SNFSearch.zip .
+cp target/universal/snfsearch-1.0.zip .

@@ -16,6 +16,4 @@ mainClass in (Compile, packageBin) := Some("com.snf.Main")
 
 compileOrder := CompileOrder.JavaThenScala
 
-
-
 enablePlugins(JavaAppPackaging)

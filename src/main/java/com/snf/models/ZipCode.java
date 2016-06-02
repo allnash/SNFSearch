@@ -15,19 +15,16 @@ public class ZipCode {
     private static Map<Integer,ZipCode> codes;
 
     /**
-     * @param number
      * Zip code number
      */
     public Integer number;
 
     /**
-     * @param lat
      * Latitude of Zip code
      */
 
     public double lat;
     /**
-     * @param lon
      * Longitude of Zip code
      */
     public double lon;
@@ -57,6 +54,10 @@ public class ZipCode {
         this.lon = lon;
     }
 
+    /**
+     * @return codes
+     * Map of ZipCodes
+     */
     public static Map<Integer,ZipCode> getCodes(){
         if(codes == null){
             codes = ZipCodeCSVReader.convertCsvToJava("zip_code_centroids.csv");
@@ -65,6 +66,12 @@ public class ZipCode {
         return codes;
     }
 
+    /**
+     * @param integer
+     * Integer value of Zip Code
+     * @return zipcode
+     * ZipCode for a Zip Number
+     */
     public static ZipCode findByNumber(Integer integer) {
 
         if(codes == null){
@@ -78,6 +85,12 @@ public class ZipCode {
             return null;
     }
 
+    /**
+     * @param integer
+     * Integer value of Zip Code
+     * @return present
+     * Boolean value TRUE/FALSE if we know that we have a ZipCode Centroid
+     */
     public static boolean hasZipCodeWithNumber(Integer integer) {
         Boolean b = codes.containsKey(integer);
         return b;

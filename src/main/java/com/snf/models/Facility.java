@@ -17,49 +17,41 @@ public class Facility {
     private static List<Facility> facilities;
 
     /**
-     * @param provider_number
      * SNF provider_number from the “ProviderInfo_Download.csv” file.
      */
     public String provider_number;
 
     /**
-     * @param name
      * SNF name from the “ProviderInfo_Download.csv” file.
      */
     public String name;
 
     /**
-     * @param address
      * SNF address from the “ProviderInfo_Download.csv” file.
      */
     public String address;
 
     /**
-     * @param city
      * SNF city from the “ProviderInfo_Download.csv” file.
      */
     public String city;
 
     /**
-     * @param state
      * SNF state from the “ProviderInfo_Download.csv” file.
      */
     public String state;
 
     /**
-     * @param zip_code
      * SNF zip code from the “ProviderInfo_Download.csv” file.
      */
     public String zip_code;
 
     /**
-     * @param phone
      * SNF phone number from the “ProviderInfo_Download.csv” file.
      */
     public String phone;
 
     /**
-     * @param overall_rating
      * SNF rating from the “ProviderInfo_Download.csv” file.
      */
     public String overall_rating;
@@ -134,9 +126,8 @@ public class Facility {
      * @return lat
      * Latitude of Zip code
      */
-
-    public double getLat(Map<Integer,ZipCode> zipCodeMap) {
-        ZipCode z = zipCodeMap.get(Integer.valueOf(this.getZip_code()));
+    public double getLat() {
+        ZipCode z = ZipCode.getCodes().get(Integer.valueOf(this.getZip_code()));
 
         if (z == null){
             System.out.println("Centroid Unknown for zip code- " + this.getZip_code());
@@ -150,9 +141,8 @@ public class Facility {
      * @return lon
      * Longitude of Zip code
      */
-
-    public double getLon(Map<Integer,ZipCode> zipCodeMap) {
-        ZipCode z = zipCodeMap.get(Integer.valueOf(this.getZip_code()));
+    public double getLon() {
+        ZipCode z = ZipCode.getCodes().get(Integer.valueOf(this.getZip_code()));
 
         if (z == null){
             System.out.println("Centroid Unknown for zip code- " + this.getZip_code());
@@ -162,6 +152,10 @@ public class Facility {
         return z.getLon();
     }
 
+    /**
+     * @return facilities
+     * List of Facilities
+     */
     public static List<Facility> getFacilities(){
         if(facilities == null){
             facilities = FacilityCSVReader.convertCsvToJava("ProviderInfo_Download.csv");
@@ -170,6 +164,10 @@ public class Facility {
     }
 
     /**
+     * @param lat
+     * latitude of the Centroid
+     * @param lon
+     * longitude of the Centroid
      * @return distance_miles
      * distance in miles from the centroid of the search zip code centroid
      * to the SNF zip code centroid

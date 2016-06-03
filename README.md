@@ -1,11 +1,11 @@
-Skilled Nursing Provider Search
+Skilled Nursing Facility Search
 ===============================
 Project to search Skilled Nursing Providers close to a Users Location within 10 mile radius.
 
 ##This project uses following OpenSource Projects
 * Jackson JSON
 
-##This project need the following on your machine
+##This project needs the following on your machine
 * Java 7.0+
 * Activator lib (included)
 * GIT
@@ -35,3 +35,4 @@ run the following command in your terminal:
 
 	# Example to run SNFSearch
 	~/local/bin/snf -lat 42.358506 -lon -71.060142
+	~/local/bin/snf -lat 42.358506 -lon -71.060142 -radius 5.0

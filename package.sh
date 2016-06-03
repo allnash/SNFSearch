@@ -6,7 +6,6 @@ echo "+ ATTEMPTING TO BUILD SNF SEARCH TOOL +"
 echo "+ ATTEMPTING TO BUILD CURRENT BINARY FOR UNIVERSAL SYSTEMS +"
 ./bin/activator pack
 echo "+ STAGING BUILD COMPLETED +"
-echo "+ INSTALLING 'snf' TO YOUR  $ ~/local/bin/snf"
 cp -r target/pack/ installer
 # cd installer; make install
 ./install.sh

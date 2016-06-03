@@ -40,12 +40,11 @@ public class Main {
         try {
             lat = Float.valueOf(optsList.get("-lat").getOpt());
             lon = Float.valueOf(optsList.get("-lon").getOpt());
-        } catch (NullPointerException e){
+        } catch (NullPointerException | java.lang.NumberFormatException e) {
             System.out.println("Error -  Could not parse -lat and -lon, please correct your input");
             CommandLine.printHelp();
             System.exit(0);
         }
-
 
         System.out.println("Total Number of Facilities to Search from : " + Facility.getFacilities().size());
         System.out.println("Total Number of Zip Codes to Search from : " + ZipCode.getCodes().size());

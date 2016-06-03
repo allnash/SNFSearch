@@ -7,10 +7,12 @@ echo "+ ATTEMPTING TO BUILD CURRENT BINARY FOR UNIVERSAL SYSTEMS +"
 ./bin/activator pack
 echo "+ STAGING BUILD COMPLETED +"
 echo "+ INSTALLING 'snf' TO YOUR  $ ~/local/bin/snf"
-cd target/pack; make install
+cp -r target/pack/ installer
+# cd installer; make install
+./install.sh
 export PATH=$HOME/local/bin:$PATH
 echo " "
-echo "+ SUCCESSFULLY INSTALLED 'snf' , RUN PROGRAM BY TYPING 'snf' +"
+echo "+ SUCCESSFULLY INSTALLED 'snf' , RUN PROGRAM BY TYPING '~/local/bin/snf' +"
 echo " "
 echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
 echo "+    Add the following configuration to your .bash_profile, .zsh_profile, etc. for the usability:         +"

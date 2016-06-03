@@ -16,4 +16,12 @@ mainClass in (Compile, packageBin) := Some("com.snf.Main")
 
 compileOrder := CompileOrder.JavaThenScala
 
+// If you need to specify main classes manually, use packSettings and packMain
+packSettings
+
+packResourceDir += (baseDirectory.value / "data" -> "data")
+
+// [Optional] Creating `hello` command that calls org.mydomain.Hello#main(Array[String])
+packMain := Map("snf" -> "com.snf.Main")
+
 enablePlugins(JavaAppPackaging)

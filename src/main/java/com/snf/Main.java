@@ -55,10 +55,12 @@ public class Main {
         for(Facility f : Facility.getFacilities()){
             double distance = f.getDistance_miles(lat,lon);
             // check if Distance is less than 10 miles
+            Facility cf  = f;
+            cf.setDistance(String.valueOf(distance));
             int retval = Double.compare(distance, 10.0);
             if(retval < 1)
             {
-                closeFacilities.add(f);
+                closeFacilities.add(cf);
             }
         }
 

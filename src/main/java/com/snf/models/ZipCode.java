@@ -60,7 +60,7 @@ public class ZipCode {
      */
     public static Map<Integer,ZipCode> getCodes(){
         if(codes == null){
-            codes = ZipCodeCSVReader.convertCsvToJava("zip_code_centroids.csv");
+            codes = ZipCodeCSVReader.convertCsvToJava("data/zip_code_centroids.csv");
         }
 
         return codes;
@@ -75,7 +75,7 @@ public class ZipCode {
     public static ZipCode findByNumber(Integer integer) {
 
         if(codes == null){
-            codes = ZipCodeCSVReader.convertCsvToJava("zip_code_centroids.csv");
+            codes = ZipCodeCSVReader.convertCsvToJava("data/zip_code_centroids.csv");
         }
 
         Boolean b = codes.containsKey(integer);

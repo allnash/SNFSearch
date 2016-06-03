@@ -56,6 +56,10 @@ public class Facility {
      */
     public String overall_rating;
 
+    /**
+     * SNF rating from the “ProviderInfo_Download.csv” file.
+     */
+    public String distance;
 
     /**
      * @return score
@@ -122,6 +126,22 @@ public class Facility {
         this.overall_rating = overall_rating;
     }
 
+    public String getProvider_number() {
+        return provider_number;
+    }
+
+    public void setProvider_number(String provider_number) {
+        this.provider_number = provider_number;
+    }
+
+    public String getDistance() {
+        return distance;
+    }
+
+    public void setDistance(String distance) {
+        this.distance = distance;
+    }
+
     /**
      * @return lat
      * Latitude of Zip code
@@ -158,7 +178,7 @@ public class Facility {
      */
     public static List<Facility> getFacilities(){
         if(facilities == null){
-            facilities = FacilityCSVReader.convertCsvToJava("ProviderInfo_Download.csv");
+            facilities = FacilityCSVReader.convertCsvToJava("data/ProviderInfo_Download.csv");
         }
         return facilities;
     }
@@ -179,14 +199,6 @@ public class Facility {
             return Haversine.distanceInMiles(z.getLat(),z.getLon(),lat,lon);
         } else
             return 9999;
-    }
-
-    public String getProvider_number() {
-        return provider_number;
-    }
-
-    public void setProvider_number(String provider_number) {
-        this.provider_number = provider_number;
     }
 }
 

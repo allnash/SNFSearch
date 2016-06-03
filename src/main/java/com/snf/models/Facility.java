@@ -59,7 +59,7 @@ public class Facility {
     /**
      * SNF rating from the “ProviderInfo_Download.csv” file.
      */
-    public String distance;
+    public double distance;
 
     /**
      * @return score
@@ -134,11 +134,11 @@ public class Facility {
         this.provider_number = provider_number;
     }
 
-    public String getDistance() {
+    public double getDistance() {
         return distance;
     }
 
-    public void setDistance(String distance) {
+    public void setDistance(double distance) {
         this.distance = distance;
     }
 

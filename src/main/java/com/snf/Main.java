@@ -6,10 +6,7 @@ import com.snf.json.Printer;
 import com.snf.models.Facility;
 import com.snf.models.ZipCode;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Main {
 
@@ -55,7 +52,7 @@ public class Main {
             double distance = f.getDistance_miles(lat,lon);
             // check if Distance is less than 10 miles
             Facility cf  = f;
-            cf.setDistance(String.valueOf(distance));
+            cf.setDistance(distance);
             int retval = Double.compare(distance, 10.0);
             if(retval < 1)
             {
@@ -63,8 +60,31 @@ public class Main {
             }
         }
 
+        sort(closeFacilities);
+
         System.out.println("Total Number of Close Facilities to ( " + lat + " , " + lon + " )  : " + closeFacilities.size());
         System.out.println("Writing JSON to output.json");
         Printer.writeToFile("output.json",closeFacilities);
+    }
+
+    /**
+     *
+     *  Sort By Distance Up To Two Decimal places In FLOAT VALUE;
+     *  If two facilities are equidistant, sort by comparing overall-rating by One decimal place.
+    * */
+    private static void sort(List<Facility> facilities){
+        Collections.sort(facilities, new Comparator<Facility>() {
+            @Override
+            public int compare(final Facility object1, final Facility object2) {
+                // Ascending order
+                int diffValue = (int) (object1.getDistance()* 100 - object2.getDistance() * 100);
+                if(diffValue == 0)
+                {
+                    // Decending order
+                    diffValue = (int)(Float.valueOf(object2.getOverall_rating()) * 10 - Float.valueOf(object1.getOverall_rating()) * 10);
+                }
+                return diffValue;
+            }
+        });
     }
 }

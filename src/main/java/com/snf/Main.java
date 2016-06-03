@@ -43,6 +43,16 @@ public class Main {
             System.exit(0);
         }
 
+
+        double radius = 10.0;
+        try {
+             radius = Float.valueOf(optsList.get("-radius").getOpt());
+             System.out.println("Search Radius : " + radius + " miles");
+
+        } catch (NullPointerException | java.lang.NumberFormatException e) {
+            System.out.println("Invalid radius, setting to: " + radius + " miles");
+        }
+
         System.out.println("Total Number of Facilities to Search from : " + Facility.getFacilities().size());
         System.out.println("Total Number of Zip Codes to Search from : " + ZipCode.getCodes().size());
 
@@ -53,7 +63,7 @@ public class Main {
             // check if Distance is less than 10 miles
             Facility cf  = f;
             cf.setDistance(distance);
-            int retval = Double.compare(distance, 10.0);
+            int retval = Double.compare(distance, radius);
             if(retval < 1)
             {
                 closeFacilities.add(cf);

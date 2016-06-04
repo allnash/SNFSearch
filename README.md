@@ -36,3 +36,14 @@ run the following command in your terminal:
 	# Example to run SNFSearch
 	~/local/bin/snf -lat 42.358506 -lon -71.060142
 	~/local/bin/snf -lat 42.358506 -lon -71.060142 -radius 5.0
+
+##SNF HTTP Server Lets you fetch the Providers JSON as an HTTP Request, Server starts on PORT 8888
+
+	# Start HTTP Server with the following command
+	~/local/bin/snf --server
+
+  # CURL HTTP GET REQUEST
+	curl -X GET 'http://localhost:8888/snf?lat42.358506&lon=-71.060142&radius=4.5'
+
+  # BROWSER URL
+	http://localhost:8888/snf?lat42.358506&lon=-71.060142&radius=4.5

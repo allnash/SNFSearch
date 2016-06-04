@@ -2,10 +2,8 @@ package com.snf;
 
 import com.snf.console.CommandLine;
 import com.snf.console.Option;
-import com.snf.json.Printer;
 import com.snf.models.Facility;
 import com.snf.models.ZipCode;
-import com.snf.service.Finder;
 import com.snf.service.Server;
 
 import java.util.*;

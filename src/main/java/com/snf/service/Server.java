@@ -59,6 +59,7 @@ public class Server {
                 lat = Float.valueOf(latParam);
                 lon = Float.valueOf(lonParam);
                 radius = Float.valueOf(radiusParam);
+
             } catch (NullPointerException | java.lang.NumberFormatException e) {
                 System.out.println("Error -  Could not parse -lat and -lon, please correct your input");
                 lat = 0.0;
@@ -67,6 +68,7 @@ public class Server {
             }
 
             List<Facility> closeFacilities = Finder.getFacilitiesFor(lat, lon, radius);
+            System.out.println("Fetched " + closeFacilities.size() + " Facilities for ("+ lat + "," + lon +") with-in Radius " + radius +" miles");
             Finder.sort(closeFacilities);
             response.body(Printer.getFaciltiesJSON(closeFacilities));
             return response.body();

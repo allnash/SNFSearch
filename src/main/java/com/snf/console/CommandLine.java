@@ -2,8 +2,10 @@ package com.snf.console;
 
 
 import com.snf.Main;
+import com.snf.json.Printer;
 import com.snf.models.Facility;
 import com.snf.models.ZipCode;
+import com.snf.service.Finder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +44,11 @@ public class CommandLine {
                             CommandLine.printSample();
                             System.exit(0);
                         }
+
+                        if(args[i].equals("--server")){
+                            Main.optsList.put(args[i],new Option(args[i], null));
+                        }
+
                     } else {
                         if (args.length-1 == i)
                             throw new IllegalArgumentException("Expected arg after: "+args[i]);
@@ -85,5 +92,36 @@ public class CommandLine {
 
         System.out.println("Total Number of Close Facilities to (42.358506, -71.060142) Boston :" + closeFacilities.size());
 
+    }
+
+    public static void runCommand(){
+
+        double lat = 0;
+        double lon = 0;
+        // Location of boston
+        try {
+            lat = Float.valueOf(Main.optsList.get("-lat").getOpt());
+            lon = Float.valueOf(Main.optsList.get("-lon").getOpt());
+        } catch (NullPointerException | java.lang.NumberFormatException e) {
+            System.out.println("Error -  Could not parse -lat and -lon, please correct your input");
+            CommandLine.printHelp();
+            System.exit(0);
+        }
+
+        double radius = 10.0;
+        try {
+            radius = Float.valueOf(Main.optsList.get("-radius").getOpt());
+            System.out.println("Search Radius : " + radius + " miles");
+
+        } catch (NullPointerException | java.lang.NumberFormatException e) {
+            System.out.println("Invalid radius, setting to: " + radius + " miles");
+        }
+
+        List<Facility> closeFacilities = Finder.getFacilitiesFor(lat,lon,radius);
+        Finder.sort(closeFacilities);
+
+        System.out.println("Total Number of Close Facilities to ( " + lat + " , " + lon + " )  : " + closeFacilities.size());
+        System.out.println("Writing JSON to output.json");
+        Printer.writeToFile("output.json",closeFacilities);
     }
 }

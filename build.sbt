@@ -14,6 +14,8 @@ mainClass in (Compile, run) := Some("com.snf.Main")
 
 mainClass in (Compile, packageBin) := Some("com.snf.Main")
 
+libraryDependencies += "com.sparkjava" % "spark-core" % "2.5"
+
 compileOrder := CompileOrder.JavaThenScala
 
 // If you need to specify main classes manually, use packSettings and packMain

@@ -42,8 +42,8 @@ run the following command in your terminal:
 	# Start HTTP Server with the following command
 	~/local/bin/snf --server
 
-  # CURL HTTP GET REQUEST
+	# CURL HTTP GET REQUEST
 	curl -X GET 'http://localhost:8888/snf?lat42.358506&lon=-71.060142&radius=4.5'
 
-  # BROWSER URL
+	# BROWSER URL
 	http://localhost:8888/snf?lat42.358506&lon=-71.060142&radius=4.5

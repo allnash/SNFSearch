@@ -43,7 +43,7 @@ run the following command in your terminal:
 	~/local/bin/snf --server
 
 	# CURL HTTP GET REQUEST
-	curl -X GET 'http://localhost:8888/snf?lat42.358506&lon=-71.060142&radius=4.5'
+	curl -X GET 'http://localhost:8888/snf?lat=42.358506&lon=-71.060142&radius=4.5'
 
 	# BROWSER URL
-	http://localhost:8888/snf?lat42.358506&lon=-71.060142&radius=4.5
+	http://localhost:8888/snf?lat=42.358506&lon=-71.060142&radius=4.5
